@@ -15,7 +15,8 @@ import { noop } from 'lodash-es'
 import { basePath } from '@/utils/var'
 
 // load file from local instead of cdn https://github.com/suren-atoyan/monaco-react/issues/482
-loader.config({ paths: { vs: `${basePath}/vs` } })
+if (typeof window !== 'undefined')
+  loader.config({ paths: { vs: `${window.location.origin}${basePath}/vs` } })
 
 const CODE_EDITOR_LINE_HEIGHT = 18
 
@@ -39,6 +40,7 @@ export type Props = {
   showCodeGenerator?: boolean
   className?: string
   tip?: React.JSX.Element
+  footer?: React.ReactNode
 }
 
 export const languageMap = {
@@ -67,6 +69,7 @@ const CodeEditor: FC<Props> = ({
   showCodeGenerator = false,
   className,
   tip,
+  footer,
 }) => {
   const [isFocus, setIsFocus] = React.useState(false)
   const [isMounted, setIsMounted] = React.useState(false)
@@ -159,6 +162,7 @@ const CodeEditor: FC<Props> = ({
           unicodeHighlight: {
             ambiguousCharacters: false,
           },
+          stickyScroll: { enabled: false },
         }}
         onMount={handleEditorDidMount}
       />
@@ -191,6 +195,7 @@ const CodeEditor: FC<Props> = ({
             showFileList={showFileList}
             showCodeGenerator={showCodeGenerator}
             tip={tip}
+            footer={footer}
           >
             {main}
           </Base>

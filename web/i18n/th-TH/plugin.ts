@@ -6,6 +6,8 @@ const translation = {
     agents: 'กลยุทธ์ตัวแทน',
     all: 'ทั้งหมด',
     bundles: 'ชุดรวม',
+    datasources: 'แหล่งข้อมูล',
+    triggers: 'สิ่งกระตุ้น',
   },
   categorySingle: {
     tool: 'เครื่องมือ',
@@ -13,6 +15,8 @@ const translation = {
     agent: 'กลยุทธ์ตัวแทน',
     model: 'แบบ',
     bundle: 'มัด',
+    datasource: 'แหล่งข้อมูล',
+    trigger: 'ทริกเกอร์',
   },
   list: {
     source: {
@@ -43,6 +47,7 @@ const translation = {
       viewDetail: 'ดูรายละเอียด',
       checkUpdate: 'ตรวจสอบการอัปเดต',
       remove: 'ถอด',
+      back: 'กลับ',
     },
     toolSelector: {
       settings: 'การตั้งค่าผู้ใช้',
@@ -246,6 +251,12 @@ const translation = {
     custom: 'ที่กำหนดเอง',
     useApiAuthDesc: 'หลังจากตั้งค่าข้อมูลประจำตัวแล้ว สมาชิกทุกคนภายในพื้นที่ทำงานสามารถใช้เครื่องมือนี้เมื่อจัดการแอปพลิเคชันได้',
     clientInfo: 'เนื่องจากไม่พบความลับของลูกค้าสำหรับผู้ให้บริการเครื่องมือนี้ จำเป็นต้องตั้งค่าแบบแมนนวล สำหรับ redirect_uri กรุณาใช้',
+    unavailable: 'ไม่มีให้บริการ',
+    customCredentialUnavailable: 'ข้อมูลรับรองที่กำหนดเองขณะนี้ไม่สามารถใช้ได้',
+    credentialUnavailable: 'ข้อมูลรับรองไม่สามารถใช้งานได้ในขณะนี้ กรุณาติดต่อผู้ดูแลระบบ.',
+    credentialUnavailableInButton: 'ข้อมูลรับรองไม่พร้อมใช้งาน',
+    connectedWorkspace: 'พื้นที่ทํางานที่เชื่อมต่อ',
+    emptyAuth: 'โปรดกําหนดค่าการรับรองความถูกต้อง',
   },
   deprecated: 'เลิกใช้',
   autoUpdate: {
@@ -297,6 +308,12 @@ const translation = {
     excludeUpdate: 'ปลั๊กอิน {{num}} ต่อไปนี้จะไม่อัพเดตอัตโนมัติ',
     partialUPdate: 'ปลั๊กอิน {{num}} ตัวต่อไปนี้จะอัปเดตให้อัตโนมัติเท่านั้น',
     changeTimezone: 'ในการเปลี่ยนเขตเวลา ให้ไปที่ <setTimezone>การตั้งค่า</setTimezone>',
+  },
+  readmeInfo: {
+    title: 'อ่านฉัน',
+    needHelpCheckReadme: 'ต้องการความช่วยเหลือ? ตรวจสอบไฟล์ README',
+    noReadmeAvailable: 'ไม่มีไฟล์ README',
+    failedToFetch: 'ไม่สามารถดึงไฟล์ README ได้',
   },
 }
 

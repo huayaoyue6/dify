@@ -20,6 +20,7 @@ import timezone from 'dayjs/plugin/timezone'
 import { useAppContext } from '@/context/app-context'
 import { useRouter } from 'next/navigation'
 import { useProviderContext } from '@/context/provider-context'
+import { ACCOUNT_SETTING_TAB } from '@/app/components/header/account-setting/constants'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -99,28 +100,28 @@ const useEducationReverifyNotice = ({
     if (isLoading || !timezone)
       return
     if (allowRefreshEducationVerify) {
-        const expired = isExpired(educationAccountExpireAt!, timezone)
-        const isExpireAtChanged = prevExpireAt !== educationAccountExpireAt
-        if (isExpireAtChanged) {
-          setPrevExpireAt(educationAccountExpireAt!)
-          setReverifyHasNoticed(false)
-          setExpiredHasNoticed(false)
-        }
-        const shouldNotice = (() => {
-          if (isExpireAtChanged)
-            return true
-          return expired ? !expiredHasNoticed : !reverifyHasNoticed
-        })()
-        if (shouldNotice) {
-          onNotice({
-            expireAt: educationAccountExpireAt!,
-            expired,
-          })
-          if (expired)
-            setExpiredHasNoticed(true)
-          else
-            setReverifyHasNoticed(true)
-        }
+      const expired = isExpired(educationAccountExpireAt!, timezone)
+      const isExpireAtChanged = prevExpireAt !== educationAccountExpireAt
+      if (isExpireAtChanged) {
+        setPrevExpireAt(educationAccountExpireAt!)
+        setReverifyHasNoticed(false)
+        setExpiredHasNoticed(false)
+      }
+      const shouldNotice = (() => {
+        if (isExpireAtChanged)
+          return true
+        return expired ? !expiredHasNoticed : !reverifyHasNoticed
+      })()
+      if (shouldNotice) {
+        onNotice({
+          expireAt: educationAccountExpireAt!,
+          expired,
+        })
+        if (expired)
+          setExpiredHasNoticed(true)
+        else
+          setReverifyHasNoticed(true)
+      }
     }
   }, [allowRefreshEducationVerify, timezone])
 
@@ -155,7 +156,7 @@ export const useEducationInit = () => {
 
   useEffect(() => {
     if (educationVerifying === 'yes' || educationVerifyAction === EDUCATION_VERIFY_URL_SEARCHPARAMS_ACTION) {
-      setShowAccountSettingModal({ payload: 'billing' })
+      setShowAccountSettingModal({ payload: ACCOUNT_SETTING_TAB.BILLING })
 
       if (educationVerifyAction === EDUCATION_VERIFY_URL_SEARCHPARAMS_ACTION)
         localStorage.setItem(EDUCATION_VERIFYING_LOCALSTORAGE_ITEM, 'yes')
